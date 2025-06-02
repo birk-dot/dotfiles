@@ -1,0 +1,6 @@
+mode=drun
+allow_images=true
+term=kitty
+insensitive=true
+location=center
+prompt=search
