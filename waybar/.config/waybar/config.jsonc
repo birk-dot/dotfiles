@@ -72,7 +72,7 @@
         "tooltip" : true,
         "format" : "{}",
         "restart-interval" : 300,
-        "exec" : "~/.config/waybar/scripts/weather",
+        "exec" : "go run ~/.config/waybar/scripts/weather.go",
         "return-type" : "json"
     },
     "tray": {
@@ -81,7 +81,7 @@
         "spacing": 10
     },
     "clock": {
-        "format":"<b>󰥔 {:%I:%M 󰃭 %d/%m}</b>",
+        "format":"<b>󰥔 {:%H:%M 󰃭 %d/%m}</b>",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "pulseaudio": {

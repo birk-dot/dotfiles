@@ -133,18 +133,18 @@ func formatChances(hour struct {
 		hour.ChanceOfRain, hour.ChanceOfSnow, hour.ChanceOfSunshine,
 		hour.ChanceOfThunder, hour.ChanceOfWindy,
 	}
-	
+
 	chanceNames := []string{
 		"Fog", "Frost", "Overcast", "Rain", "Snow", "Sunshine", "Thunder", "Wind",
 	}
-	
+
 	var conditions []string
 	for i, chanceStr := range chanceValues {
 		if chance, err := strconv.Atoi(chanceStr); err == nil && chance > 0 {
 			conditions = append(conditions, fmt.Sprintf("%s %s%%", chanceNames[i], chanceStr))
 		}
 	}
-	
+
 	return strings.Join(conditions, ", ")
 }
 
@@ -156,19 +156,19 @@ func main() {
 		return
 	}
 	defer resp.Body.Close()
-	
+
 	var weather WeatherData
 	if err := json.NewDecoder(resp.Body).Decode(&weather); err != nil {
 		fmt.Printf("Error decoding weather data: %v\n", err)
 		return
 	}
-	
+
 	var data OutputData
-	
+
 	// Set text
 	currentCondition := weather.CurrentCondition[0]
 	data.Text = weatherCodes[currentCondition.WeatherCode] + " " + currentCondition.FeelsLikeC + "°C"
-	
+
 	// Build tooltip
 	data.Tooltip = fmt.Sprintf("<b>%s %s°C</b>\n",
 		currentCondition.WeatherDesc[0].Value,
@@ -176,9 +176,9 @@ func main() {
 	data.Tooltip += fmt.Sprintf("Feels like: %s°C\n", currentCondition.FeelsLikeC)
 	data.Tooltip += fmt.Sprintf("Wind: %smi/h\n", currentCondition.WindspeedMiles)
 	data.Tooltip += fmt.Sprintf("Humidity: %s%%\n", currentCondition.Humidity)
-	
+
 	now := time.Now()
-	
+
 	for i, day := range weather.Weather {
 		data.Tooltip += "\n<b>"
 		if i == 0 {
@@ -189,7 +189,7 @@ func main() {
 		data.Tooltip += fmt.Sprintf("%s</b>\n", day.Date)
 		data.Tooltip += fmt.Sprintf("⬆️ %s° ⬇️ %s° ", day.MaxtempC, day.MintempC)
 		data.Tooltip += fmt.Sprintf("🌅 %s 🌇 %s\n", day.Astronomy[0].Sunrise, day.Astronomy[0].Sunset)
-		
+
 		for _, hour := range day.Hourly {
 			// Skip past hours for today
 			if i == 0 {
@@ -198,7 +198,7 @@ func main() {
 					continue
 				}
 			}
-			
+
 			data.Tooltip += fmt.Sprintf("%s %s %s %s, %s\n",
 				formatTime(hour.Time),
 				weatherCodes[hour.WeatherCode],
@@ -220,13 +220,13 @@ func main() {
 				}))
 		}
 	}
-	
+
 	// Output JSON
 	output, err := json.Marshal(data)
 	if err != nil {
 		fmt.Printf("Error marshaling output: %v\n", err)
 		return
 	}
-	
+
 	fmt.Println(string(output))
 }
