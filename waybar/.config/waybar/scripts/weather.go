@@ -150,7 +150,7 @@ func formatChances(hour struct {
 
 func main() {
 	// Fetch weather data
-	resp, err := http.Get("https://wttr.in/?format=j1")
+	resp, err := http.Get("https://wttr.in/Amager?format=j1")
 	if err != nil {
 		fmt.Printf("Error fetching weather data: %v\n", err)
 		return

@@ -145,3 +145,34 @@ tooltip {
     border-radius: 10px 10px 10px 10px;
     margin-left: 5px;
 }
+
+#custom-spotify {
+    background-color: #1f1d2e; /* Rose Pine Surface */
+    color: #e0def4; /* Rose Pine Text */
+    padding: 0 10px;
+    margin: 0 5px;
+    border-radius: 8px;
+    font-weight: bold;
+    min-width: 200px; /* Adjust as needed */
+}
+
+#custom-spotify.playing {
+    /* background-color: #31748f; Rose Pine Pine color (active/playing) */
+    color: #e0def4; /* Rose Pine Text */
+}
+
+#custom-spotify.paused {
+    background-color: #403d52; /* Rose Pine Highlight Med (paused) */
+    color: #e0def4; /* Rose Pine Text */
+}
+
+#custom-spotify.offline {
+    background-color: #26233a; /* Rose Pine Overlay (offline) */
+    color: #908caa; /* Rose Pine Muted */
+}
+
+/* Optional: Hover effect */
+#custom-spotify:hover {
+    background-color: #524f67; /* Rose Pine Highlight High on hover */
+}
+

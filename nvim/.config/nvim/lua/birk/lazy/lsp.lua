@@ -82,7 +82,7 @@ return {
             float = {
                 focusable = false,
                 style = "minimal",
-                border = "rounded",
+                --  border = "rounded",
                 source = "always",
                 header = "",
                 prefix = "",
