@@ -13,14 +13,16 @@
     ],
     "modules-center": ["hyprland/window"],
     "modules-right": [
-        "tray",
+        // "tray",
+        "custom/uair",
         "custom/spotify",
         // "custom/language",
 	"network",
 	"pulseaudio",
         "pulseaudio#microphone",
         "custom/weather",
-        "clock"
+        "clock",
+        "custom/notification"
     ],
 
     "hyprland/window": {
@@ -88,6 +90,54 @@
         "on-click-right": "playerctl --player=spotify next", // Skip to next song on right click
         "on-click-middle": "playerctl --player=spotify previous" // Go to previous song on middle click
     },
+    "custom/uair": {
+      "format": "{icon} {text}",
+      "format-icons": [
+        "○○○○○○○○○●",
+        "○○○○○○○○●●",
+        "○○○○○○●●●●",
+        "○○○○○●●●●●",
+        "○○○○●●●●●●",
+        "○○○●●●●●●●",
+        "○○●●●●●●●●",
+        "○●●●●●●●●●",
+        "●●●●●●●●●●"
+      ],
+      "tooltip": false,
+      "return-type": "json",
+      "interval": 5,
+      "on-click": "uairctl toggle",
+      "on-click-middle": "uairctl prev",
+      "on-click-right": "uairctl next",
+      "exec-if": "which uairctl",
+      "exec": "uairctl fetch '{\"text\":\"{name} {time} {percent}%\",\"class\":\"{state}\",\"percentage\":{percent}}'"
+    },
+    "custom/uair-button": {
+        "tooltip": false,
+        "on-click": "uair",
+        "exec-if": "which uair",
+        "exec": "uair"
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+          "notification": "<span foreground='red'><sup></sup></span>",
+          "none": "",
+          "dnd-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-none": "",
+          "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+          "inhibited-none": "",
+          "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+      },
     "tray": {
         "icon-size": 14,
         "tooltip": false,

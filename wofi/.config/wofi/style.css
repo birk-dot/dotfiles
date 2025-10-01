@@ -1,6 +1,6 @@
 window {
     margin: 0px;
-    background-color: black;
+    background-color: #141415;
     border-radius: 0px;
     border: 2px solid #524f67;
     color: #e0def4;
@@ -21,7 +21,7 @@ window {
 #inner-box {
     margin: 5px;
     border: none;
-    background-color: black;
+    background-color: #141415;
     color: #232136;
     border-radius: 0px;
 }
@@ -29,7 +29,7 @@ window {
 #outer-box {
     margin: 15px;
     border: none;
-    background-color: black;
+    background-color: #141415;
 }
 
 #scroll {

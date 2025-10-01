@@ -53,6 +53,9 @@ tooltip {
 #custom-updates,
 #custom-caffeine,
 #custom-weather,
+#custom-uair,
+#custom-spotify,
+#custom-notification,
 #window,
 #clock,
 #battery,
@@ -61,7 +64,8 @@ tooltip {
 #workspaces,
 #tray,
 #backlight {
-    background: #1e1e2e;
+    background: #141415;
+    /*background: #1e1e2e; */
     padding: 0px 10px;
     margin: 3px 0px;
     margin-top: 10px;
@@ -117,8 +121,9 @@ tooltip {
 
 #network {
     color: #c4a7e7;
-    border-left: 0px;
-    border-right: 0px;
+    border-radius: 10px 10px 10px 10px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 #pulseaudio {
@@ -142,18 +147,18 @@ tooltip {
 }
 
 #custom-weather {
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 0 10px 10px 10px;
     margin-left: 5px;
 }
 
 #custom-spotify {
-    background-color: #1f1d2e; /* Rose Pine Surface */
+    /*background-color: #1f1d2e;  Rose Pine Surface */
     color: #e0def4; /* Rose Pine Text */
-    padding: 0 10px;
-    margin: 0 5px;
     border-radius: 8px;
     font-weight: bold;
-    min-width: 200px; /* Adjust as needed */
+    min-width: 100px; /* Adjust as needed */
+    border-radius: 10px 10px 10px 10px;
+    margin-left: 5px;
 }
 
 #custom-spotify.playing {
@@ -162,17 +167,38 @@ tooltip {
 }
 
 #custom-spotify.paused {
-    background-color: #403d52; /* Rose Pine Highlight Med (paused) */
+    /*background-color: #403d52; Rose Pine Highlight Med (paused) */
     color: #e0def4; /* Rose Pine Text */
 }
 
 #custom-spotify.offline {
-    background-color: #26233a; /* Rose Pine Overlay (offline) */
+    /*background-color: #26233a;  Rose Pine Overlay (offline) */
     color: #908caa; /* Rose Pine Muted */
 }
 
 /* Optional: Hover effect */
 #custom-spotify:hover {
     background-color: #524f67; /* Rose Pine Highlight High on hover */
+}
+
+#custom-uair {
+    border-radius: 10px 10px 10px 10px;
+    color: #9ccfd8;
+
+}
+
+#custom-uair.resumed {
+    color: #ebbcba;
+    border-radius: 10px 0 0 10px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+#custom-uair-button {}
+
+#custom-notification {
+    color: #eb6f92;
+    border-radius: 10px 10px 10px 10px;
+    margin-right: 5px;
 }
 

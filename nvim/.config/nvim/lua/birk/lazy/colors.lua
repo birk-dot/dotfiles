@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-	color = color or "rose-pine"
+	color = color or "vague"
 	vim.cmd.colorscheme(color)
 
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -59,6 +59,25 @@ return {
 
             ColorMyPencils()
         end
+    },
+    {
+      "vague2k/vague.nvim",
+      name = "vague",
+      lazy = false, -- make sure we load this during startup if it is your main colorscheme
+      priority = 1000, -- make sure to load this before all the other plugins
+      config = function()
+        -- NOTE: you do not need to call setup if you don't want to.
+        require("vague").setup({
+              transparent = true,
+              italic = false,
+          -- optional configuration here
+            styles = {
+                },
+        })
+        vim.cmd("colorscheme vague")
+
+            ColorMyPencils()
+      end
     }
 
 
